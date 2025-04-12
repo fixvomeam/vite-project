@@ -1,6 +1,7 @@
 import logo from './assets/logo.svg'
 import './App.css'
 
+const currentYear = new Date().getFullYear() //декларативный
 export const App = () => {
 	return (
 		<div className="App">
@@ -12,6 +13,8 @@ export const App = () => {
 				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
 					Learn React
 				</a>
+
+				<p>{currentYear}</p>
 			</header>
 		</div>
 	)
