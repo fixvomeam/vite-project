@@ -11,7 +11,7 @@ export const App = () => {
 			'header',
 			{ className: 'App-header' },
 			createElement('img', { src: logo, className: 'App-logo', alt: 'logo' }),
-			createElement('p', null, 'Edit', createElement('code', null, 'src/App.js'), 'and save to reload.'),
+			createElement('p', null, 'Edit', createElement('code', null, ` src/App.js `), ` and save to reload.`),
 			createElement(
 				'a',
 				{
