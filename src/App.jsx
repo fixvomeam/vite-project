@@ -7,8 +7,12 @@ export const App = () => {
 	const [error, setError] = useState('')
 
 	const onInputButtonClick = () => {
-		const promptValue = prompt('Введите значение ')
-		setValue(promptValue)
+		const promptValue = prompt('Введите значение ').trim()
+		if (promptValue.length < 3) setError(`Введенное значение должно содержать минимум 3 символа`)
+		else {
+			setValue(promptValue)
+			setError('')
+		}
 	}
 
 	return (
@@ -18,7 +22,7 @@ export const App = () => {
 				<p className={styles[`no-margin-text`]}>
 					Текущее значение <code>value</code>: "<output className={styles[`current-value`]}>{value}</output>"
 				</p>
-				<div className={styles.error}>Введенное значение должно содержать минимум 3 символа</div>
+				{error !== '' && <div className={styles.error}>{error}</div>}
 				<div className={styles[`buttons-container`]}>
 					<button className={styles.button} onClick={onInputButtonClick}>
 						Ввести новое
