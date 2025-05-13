@@ -46,9 +46,13 @@ export const App = () => {
 				</div>
 				<div className={styles[`list-container`]}>
 					<h2 className={styles[`list-heading`]}>Список:</h2>
-					<p className={styles[`no-margin-text`]}>Нет добавленных элементов</p>
+					{list.length === 0 && <p className={styles[`no-margin-text`]}>Нет добавленных элементов</p>}
 					<ul className={styles.list}>
-						<li className={styles[`list-item`]}>Первый элемент</li>
+						{list.map(({ id, value }) => (
+							<li className={styles[`list-item`]} key={id}>
+								{new Date(id).toLocaleString()} {value}
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
