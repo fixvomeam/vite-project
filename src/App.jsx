@@ -2,9 +2,11 @@ import { useState } from 'react'
 import styles from './app.module.css'
 
 export const App = () => {
-	const [value, setValue] = useState(0)
+	const [value, setValue] = useState('')
 	const [list, setList] = useState([])
 	const [error, setError] = useState('')
+
+	const isValueValid = value.length >= 3 ? true : false
 
 	const onInputButtonClick = () => {
 		const promptValue = prompt('Введите значение ').trim()
@@ -13,6 +15,17 @@ export const App = () => {
 			setValue(promptValue)
 			setError('')
 		}
+	}
+
+	const onAddButtonClick = () => {
+		console.log(list)
+		if (isValueValid) {
+			const id = Date.now()
+			setList((list) => [...list, { id, value }])
+			setError('')
+			setValue('')
+		}
+		console.log(list)
 	}
 
 	return (
@@ -27,7 +40,7 @@ export const App = () => {
 					<button className={styles.button} onClick={onInputButtonClick}>
 						Ввести новое
 					</button>
-					<button className={styles.button} disabled>
+					<button className={styles.button} disabled={!isValueValid} onClick={onAddButtonClick}>
 						Добавить в список
 					</button>
 				</div>
